@@ -1,4 +1,6 @@
 def registry = 'https://theshoppered.jfrog.io/'
+def imageName = 'theshoppered.jfrog.io/valaxy-docker/ttrend'
+def version   = '2.0.2'
 pipeline{
     agent {
         node {
@@ -78,8 +80,7 @@ pipeline{
             }
         }   
     }
-       def imageName = 'theshoppered.jfrog.io/valaxy-docker/ttrend'
-   def version   = '2.0.2'
+      
     stage(" Docker Build ") {
       steps {
         script {
