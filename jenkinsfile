@@ -12,18 +12,18 @@ pipeline{
         stage('build') {
             steps{
                 echo "------------ build started ---------"
-                sh 'mvn clean install -Dmaven.test.skip=true'
+                sh 'mvn clean deploy -Dmaven.test.skip=true'
                 echo "------------ build completed ---------"
         }
       }
 
-        // stage('Unit Test') {
-        //     steps {
-        //         echo '<--------------- Unit Testing started  --------------->'
-        //         sh 'mvn surefire-report:report'
-        //         echo '<------------- Unit Testing stopped  --------------->'
-        //     }
-        // }
+        stage('Unit Test') {
+            steps {
+                echo '<--------------- Unit Testing started  --------------->'
+                sh 'mvn surefire-report:report'
+                echo '<------------- Unit Testing stopped  --------------->'
+            }
+        }
 
        stage ("Sonar Analysis") {
             environment {
